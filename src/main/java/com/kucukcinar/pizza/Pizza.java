@@ -17,16 +17,18 @@ public class Pizza {
 	@Indexed(direction = IndexDirection.ASCENDING)
 	private int price;
 	private List<String> ingredients;
+	private String image;
 
 	public Pizza() {
 		this.ingredients = new ArrayList<>();
 	}
 
-	public Pizza(String name, int price, List<String> ingredients) {
+	public Pizza(String name, int price, List<String> ingredients, String image) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.ingredients = ingredients;
+		this.image = image;
 	}
 
 	public String getId() {
@@ -56,12 +58,17 @@ public class Pizza {
 	public void setIngredients(List<String> ingredients) {
 		this.ingredients = ingredients;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	@Override
 	public String toString() {
-		return "Pizza [id=" + id + ", name=" + name + ", price=" + price + ", ingredients=" + ingredients + "]";
+		return "name=" + name + ", price=" + price + ", ingredients=" + ingredients;
 	}
-
-	
-
 }

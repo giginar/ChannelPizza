@@ -9,11 +9,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kucukcinar.appuser.AppUserService;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
@@ -25,15 +29,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
+		.cors().disable()
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/").permitAll()
+		.antMatchers("/pizzas/*").permitAll()
 		.antMatchers("/api/v*/registration/**").permitAll()
 		.antMatchers("/home").hasAuthority("USER")
 		.antMatchers("/admin").hasAuthority("ADMIN")
-		.antMatchers("pizzas/*").hasAnyRole("ADMIN","USER")
+		//.antMatchers("pizzas/*").hasAnyRole("ADMIN","USER")
 		.anyRequest()
-		.authenticated().and()
+		.authenticated()
+		.and()
 		.formLogin(); //.httpbasic
 	}
 
@@ -50,8 +57,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		provider.setPasswordEncoder(bCryptPasswordEncoder);
 		provider.setUserDetailsService(appUserService);
 		return provider;
-	}
-	
-	
+	}	
 
 }
