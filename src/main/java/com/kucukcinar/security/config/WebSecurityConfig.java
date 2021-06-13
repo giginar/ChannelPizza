@@ -15,6 +15,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kucukcinar.appuser.AppUserService;
 
+/**
+ * Security configurations
+ * @author yigit
+ *
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableWebMvc
@@ -29,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
-		.cors().disable()
+		//.cors().disable()
 		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/").permitAll()

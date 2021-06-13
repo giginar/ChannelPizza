@@ -10,6 +10,12 @@ import com.kucukcinar.appuser.AppUser;
 import com.kucukcinar.appuser.AppUserRole;
 import com.kucukcinar.appuser.AppUserService;
 
+/**
+ * Registration Request Object save to database via this service.
+ * @author yigit
+ * @version 0.1
+ *
+ */
 @Service
 public class RegistrationService {
 	
@@ -19,6 +25,11 @@ public class RegistrationService {
 	@Autowired
 	private AppUserService appUserService;
 	
+	/**
+	 * This method used for registering the user with the necessary fields to the database.
+	 * @param request - RegistraionRequest type object
+	 * @return String - to understand that user is saved, returns as "user saved"
+	 */
 	public String register(RegistrationRequest request) {
 		boolean isValidEmail = emailValidator.test(request.getEmail());
 		if(!isValidEmail) {
@@ -30,6 +41,8 @@ public class RegistrationService {
 						request.getLastName(),
 						request.getEmail(),
 						request.getPassword(),
+						request.getAddress(),
+						request.getPostalCode(),
 						AppUserRole.USER
 						)
 				);

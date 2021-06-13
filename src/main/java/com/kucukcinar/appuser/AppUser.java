@@ -12,25 +12,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 
 @Document(collection = "user")
-public class AppUser implements UserDetails{
-	
+public class AppUser implements UserDetails {
+
 	@Id
 	private String id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
+	private String address;
+	private String postalCode;
 	@JsonEnumDefaultValue
 	private AppUserRole appUserRole;
 	private Boolean locked = false;
 	private Boolean enabled = false;
-	
-	public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
+
+	public AppUser(String firstName, String lastName, String email, String password, String address, String postalCode, AppUserRole appUserRole) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.appUserRole = appUserRole;
+		this.address = address;
+		this.postalCode = postalCode;
 	}
 
 	@Override
@@ -50,15 +54,31 @@ public class AppUser implements UserDetails{
 		// TODO Auto-generated method stub
 		return email;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
-	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -134,10 +154,8 @@ public class AppUser implements UserDetails{
 	@Override
 	public String toString() {
 		return "AppUser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", appUserRole=" + appUserRole + ", locked=" + locked + ", enabled="
-				+ enabled + "]";
+				+ ", password=" + password + ", address=" + address + ", postalCode=" + postalCode + ", appUserRole="
+				+ appUserRole + ", locked=" + locked + ", enabled=" + enabled + "]";
 	}
-	
-	
 
 }
