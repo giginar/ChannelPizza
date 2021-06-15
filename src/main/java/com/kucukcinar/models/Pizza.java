@@ -1,4 +1,4 @@
-package com.kucukcinar.pizza;
+package com.kucukcinar.models;
 
 import java.util.ArrayList;
 import java.util.List;

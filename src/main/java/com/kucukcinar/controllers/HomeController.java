@@ -1,4 +1,4 @@
-package com.kucukcinar;
+package com.kucukcinar.controllers;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

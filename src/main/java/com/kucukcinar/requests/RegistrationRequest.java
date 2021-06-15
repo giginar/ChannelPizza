@@ -1,7 +1,8 @@
-package com.kucukcinar.registration;
+package com.kucukcinar.requests;
 
 public class RegistrationRequest {
 
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String password;
@@ -9,6 +10,14 @@ public class RegistrationRequest {
 	private String address;
 	private String postalCode;
 	
+	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -47,8 +56,10 @@ public class RegistrationRequest {
 	}
 	@Override
 	public String toString() {
-		return "RegistrationRequest [firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
-				+ ", email=" + email + ", address=" + address + ", postalCode=" + postalCode + "]";
+		return "RegistrationRequest [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", password=" + password + ", email=" + email + ", address=" + address + ", postalCode=" + postalCode
+				+ "]";
 	}
+	
 
 }

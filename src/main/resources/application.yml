@@ -1,8 +1,14 @@
 server:
-  port: 9001
+  port: 9002
+ 
+kucukcinar:
+  app:
+    jwtSecret: YKSecretKey
+    jwtExpirationMs: 86400000
 
 spring:
-  application:
-    name: CHANNEL-PIZZA
-  zipkin:
-    base-url: http://127.0.0.1:9411/
+  data:
+    mongodb:
+      database: pizzchannel
+      host: localhost
+      port: 27017

@@ -1,4 +1,4 @@
-package com.kucukcinar.appuser;
+package com.kucukcinar.models;
 
 public enum AppUserRole {
 	USER,
