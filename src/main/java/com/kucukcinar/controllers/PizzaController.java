@@ -22,7 +22,7 @@ import com.kucukcinar.services.PizzaService;
  * @author yigit
  * @version 0.1
  */
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/pizzas")
 public class PizzaController {
@@ -34,7 +34,7 @@ public class PizzaController {
 	 * this method used for getting all the pizza entities without any filtering.
 	 * @return List of Pizzas
 	 */
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	@GetMapping("/getAllPizzas")
 	public List<Pizza> getAllPizzas() {
 		return pizzaService.getAllPizzas();
@@ -46,7 +46,7 @@ public class PizzaController {
 	 * @return Pizza entity which has the referenced id
 	 */
 	@GetMapping("/{id}")
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public Optional<Pizza> getPizza(@PathVariable String id) {
 		return pizzaService.getPizzaById(id);
 	}
@@ -56,7 +56,7 @@ public class PizzaController {
 	 * @return List of pizzas which has lower price than maxPrice.
 	 */
 	@GetMapping("/price/{maxPrice}")
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public List<Pizza> getByPrice(@PathVariable("maxPrice") int maxPrice) {
 		List<Pizza> pizzas = this.pizzaService.getPizzaByPrice(maxPrice);
 		return pizzas;
@@ -70,7 +70,7 @@ public class PizzaController {
 	 * @return List of pizzas which has ingredient in their attributes.
 	 */
 	@GetMapping("all/ingredients/{ingredient}")
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public List<Pizza> getByIngredient(@PathVariable("ingredient") String ingredient) {
 		List<Pizza> pizzas = this.pizzaService.getPizzaByIngredient(ingredient);
 		return pizzas;
@@ -82,7 +82,7 @@ public class PizzaController {
 	 * @param pizza - entity to be saved
 	 */
 	@PutMapping
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public void insert(@RequestBody Pizza pizza) {
 		this.pizzaService.insertPizza(pizza);
 	}
@@ -93,7 +93,7 @@ public class PizzaController {
 	 * @param pizzas - entities to be saved.
 	 */
 	@PutMapping("/saveAll")
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public void insertAll(@RequestBody List<Pizza> pizzas) {
 		for (Pizza pizza : pizzas) {
 			this.pizzaService.insertPizza(pizza);
@@ -106,7 +106,7 @@ public class PizzaController {
 	 * @param pizza - entity to be updated.
 	 */
 	@PostMapping
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public void update(@RequestBody Pizza pizza) {
 		this.pizzaService.updatePizza(pizza);
 	}
@@ -117,7 +117,7 @@ public class PizzaController {
 	 * @param id - id of the entity to be deleted.
 	 */
 	@DeleteMapping(value = "/{id}")
-	@CrossOrigin(origins="http://localhost:8080")
+	@CrossOrigin(origins="http://localhost:8081")
 	public void deletePizza(@PathVariable("id") String id) {
 		pizzaService.deletePizza(id);
 	}

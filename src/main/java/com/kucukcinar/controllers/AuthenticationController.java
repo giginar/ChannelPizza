@@ -14,6 +14,12 @@ import com.kucukcinar.requests.RegistrationRequest;
 import com.kucukcinar.security.login.LoginRequest;
 import com.kucukcinar.services.AppUserService;
 
+/**
+ * Controller for sign in and sign up system.
+ * @author yigit
+ *
+ */
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
@@ -22,14 +28,22 @@ public class AuthenticationController {
 	@Autowired
 	AppUserService appUserService;
 	
-	
+	/**
+	 * this method used for signing in
+	 * @param loginRequest - entity with username and password
+	 * @return responseEntity
+	 */
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		System.out.println("------********-------Login denemesi-------****-------");
 		return appUserService.authenticateUser(loginRequest);
 		
 	}
-	
+	/**
+	 * This method used for signing up
+	 * @param registrationRequest entity with all the necessary information of the userApp
+	 * @return responseEntity
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest registrationRequest){
 		return appUserService.registerUser(registrationRequest);

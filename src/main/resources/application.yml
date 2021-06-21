@@ -1,14 +1,9 @@
 server:
-  port: 9002
+  port: 8080
  
 kucukcinar:
   app:
     jwtSecret: YKSecretKey
     jwtExpirationMs: 86400000
 
-spring:
-  data:
-    mongodb:
-      database: pizzchannel
-      host: localhost
-      port: 27017
+

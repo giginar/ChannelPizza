@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yigit
  *
  */
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin
 public class HomeController {
 	
 	/**

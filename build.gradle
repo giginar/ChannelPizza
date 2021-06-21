@@ -21,17 +21,17 @@ docker {
 }
 
 dependencies {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.thetransactioncompany', name: 'cors-filter', version: '2.10'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
-	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
-	testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+	implementation group: 'javax.validation', name: 'validation-api'
+	testImplementation group: 'org.mockito', name: 'mockito-core'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.5.0'
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	//implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '3.0.3'
 }
 
 test {

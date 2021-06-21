@@ -1,6 +1,11 @@
 package com.kucukcinar.security.jwt;
 
+import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,16 +21,18 @@ import io.jsonwebtoken.*;
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	@Value("${kucukcinar.app.jwtSecret}")
-	private String jwtSecret;
-
-	@Value("${kucukcinar.app.jwtExpirationMs}")
-	private int jwtExpirationMs;
-
+	//@Value("${kucukcinar.app.jwtSecret}")
+	private String jwtSecret = "YKSecretKey";
+	
+	//@Value("${kucukcinar.app.jwtExpirationMs}")
+	private int jwtExpirationMs = 86400000;
+	
+	
 	public String generateJwtToken(Authentication authentication) {
-
+		
 		AppUser userPrincipal = (AppUser) authentication.getPrincipal();
-
+		logger.info(jwtSecret);
+		logger.info(String.valueOf(jwtExpirationMs));
 		return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();

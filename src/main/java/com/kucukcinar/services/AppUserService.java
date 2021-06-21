@@ -34,23 +34,21 @@ public class AppUserService implements UserDetailsService {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	private AppUserRepository appUserRepository;
+	AppUserRepository appUserRepository;
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
 	@Autowired
 	JwtUtils jwtUtils;
-
+	
 	/**
-	 * This overriden method used for finding the users via their emails.
-	 * 
-	 * @param String email, email must be in the database otherwise exception is
-	 *               thrown.
+	 * This method controls if the loginRequest entities attributes are available in the database, so that the method can authenticate the request.
+	 * @param loginRequest entity with user name and password
+	 * @return ResponseEntity
 	 * @throws UsernameNotFoundException
 	 * @see UsernameNotFoundException
 	 */
-
 	public ResponseEntity<?> authenticateUser(LoginRequest loginRequest) throws UsernameNotFoundException {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -65,14 +63,11 @@ public class AppUserService implements UserDetailsService {
 		return ResponseEntity.ok(
 				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), "USER"));
 	}
-
+	
 	/**
-	 * This method used for saving/signing up the user in to the database.
-	 * 
-	 * @param appUser entity that is going to be saved.
-	 * @return String
-	 * @exception IllegalStateException
-	 * @see IllegalStateException
+	 * this method registers the user and also checks if the user is registered already or not.
+	 * @param registrationRequest with all the necessary attributes of the users.
+	 * @return ResponseEntity
 	 */
 	public ResponseEntity<?> registerUser(RegistrationRequest registrationRequest) {
 		System.out.println(registrationRequest.toString());
