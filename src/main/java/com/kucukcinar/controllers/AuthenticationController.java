@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kucukcinar.requests.RegistrationRequest;
-import com.kucukcinar.security.login.LoginRequest;
+import com.kucukcinar.requests.registration.RegistrationRequest;
+import com.kucukcinar.requests.login.LoginRequest;
 import com.kucukcinar.services.AppUserService;
 
 /**

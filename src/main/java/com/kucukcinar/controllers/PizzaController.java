@@ -27,7 +27,7 @@ import com.kucukcinar.services.PizzaService;
 @RequestMapping("/pizzas")
 public class PizzaController {
 
-	@Autowired // dependency injection.
+	@Autowired
 	private PizzaService pizzaService;
 
 	/**
@@ -38,28 +38,6 @@ public class PizzaController {
 	@GetMapping("/getAllPizzas")
 	public List<Pizza> getAllPizzas() {
 		return pizzaService.getAllPizzas();
-	}
-
-	/**
-	 * this method used for getting the the pizza with the id.
-	 * @param id - String, as saved in database.
-	 * @return Pizza entity which has the referenced id
-	 */
-	@GetMapping("/{id}")
-	@CrossOrigin(origins="http://localhost:8081")
-	public Optional<Pizza> getPizza(@PathVariable String id) {
-		return pizzaService.getPizzaById(id);
-	}
-	/**
-	 * this method is used for getting the pizza entities which ahs lower price than maxPrice
-	 * @param maxPrice - value to filter accordingly by user's request
-	 * @return List of pizzas which has lower price than maxPrice.
-	 */
-	@GetMapping("/price/{maxPrice}")
-	@CrossOrigin(origins="http://localhost:8081")
-	public List<Pizza> getByPrice(@PathVariable("maxPrice") int maxPrice) {
-		List<Pizza> pizzas = this.pizzaService.getPizzaByPrice(maxPrice);
-		return pizzas;
 	}
 
 	/**

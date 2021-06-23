@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 import com.kucukcinar.models.AppUser;
 import com.kucukcinar.models.AppUserRole;
 import com.kucukcinar.repository.AppUserRepository;
-import com.kucukcinar.requests.RegistrationRequest;
+import com.kucukcinar.requests.registration.RegistrationRequest;
 import com.kucukcinar.responses.JwtResponse;
 import com.kucukcinar.security.jwt.JwtUtils;
-import com.kucukcinar.security.login.LoginRequest;
+import com.kucukcinar.requests.login.LoginRequest;
 
 /**
  * User Servive implementing UserDetailService, for saving and finding the user

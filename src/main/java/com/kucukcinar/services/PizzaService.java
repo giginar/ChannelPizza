@@ -34,28 +34,6 @@ public class PizzaService {
 	}
 
 	/**
-	 * This method used for getting one Pizza entity with the passed value of id.
-	 * 
-	 * @param id - Id of the referanced pizza in the database
-	 * @return Pizza entity with the referred id.
-	 */
-	public Optional<Pizza> getPizzaById(String id) {
-		return pizzaRepository.findById(id);
-	}
-
-	/**
-	 * This method used for getting the pizzas which has less price than passed
-	 * maxPrice value.
-	 * 
-	 * @param maxPrice - value to filter accordingly by user's request
-	 * @return List of pizzas which has lower price than maxPrice.
-	 */
-	public List<Pizza> getPizzaByPrice(int maxPrice) {
-		List<Pizza> pizzas = this.pizzaRepository.findByPriceLessThan(maxPrice);
-		return pizzas;
-	}
-
-	/**
 	 * This method used for getting the Pizzas which has the ingredient in their
 	 * attributes.
 	 * 
@@ -112,4 +90,7 @@ public class PizzaService {
 		pizzaRepository.deleteById(id);
 	}
 
+	public PizzaService(PizzaRepository pizzaRepository) {
+		this.pizzaRepository = pizzaRepository;
+	}
 }

@@ -1,4 +1,4 @@
-package com.kucukcinar.requests;
+package com.kucukcinar.requests.registration;
 
 import javax.validation.constraints.NotBlank;
 
@@ -72,6 +72,16 @@ public class RegistrationRequest {
 	}
 
 	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public RegistrationRequest(String username, String firstName, String lastName, String password, String email, String address, String postalCode) {
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+		this.address = address;
 		this.postalCode = postalCode;
 	}
 

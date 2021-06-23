@@ -1,4 +1,4 @@
-package com.kucukcinar.security.login;
+package com.kucukcinar.requests.login;
 
 import javax.validation.constraints.NotBlank;
 
@@ -26,8 +26,9 @@ public class LoginRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
 
+	public LoginRequest(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 }
