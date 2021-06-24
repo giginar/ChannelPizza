@@ -10,65 +10,65 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Pizzas")
 public class Pizza {
-	
-	@Id
-	private String id;
-	private String name;
-	@Indexed(direction = IndexDirection.ASCENDING)
-	private int price;
-	private List<String> ingredients;
-	private String image;
 
-	public Pizza() {
-		this.ingredients = new ArrayList<>();
-	}
+    @Id
+    private String id;
+    private String name;
+    @Indexed(direction = IndexDirection.ASCENDING)
+    private int price;
+    private List<String> ingredients;
+    private String image;
 
-	public Pizza(String name, int price, List<String> ingredients, String image) {
-		super();
-		this.name = name;
-		this.price = price;
-		this.ingredients = ingredients;
-		this.image = image;
-	}
+    public Pizza() {
+        this.ingredients = new ArrayList<>();
+    }
 
-	public String getId() {
-		return id;
-	}
+    public Pizza(String name, int price, List<String> ingredients, String image) {
+        super();
+        this.name = name;
+        this.price = price;
+        this.ingredients = ingredients;
+        this.image = image;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	public List<String> getIngredients() {
-		return ingredients;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	public void setIngredients(List<String> ingredients) {
-		this.ingredients = ingredients;
-	}
-	
-	public String getImage() {
-		return image;
-	}
+    public List<String> getIngredients() {
+        return ingredients;
+    }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
 
-	@Override
-	public String toString() {
-		return "name=" + name + ", price=" + price + ", ingredients=" + ingredients;
-	}
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "name=" + name + ", price=" + price + ", ingredients=" + ingredients;
+    }
 }

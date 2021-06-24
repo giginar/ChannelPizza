@@ -16,6 +16,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Login and Register testing
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class AppUserServiceTest {
@@ -26,6 +29,10 @@ class AppUserServiceTest {
     @MockBean
     private AppUserRepository appUserRepository;
 
+    /**
+     * Testing Login request from the service
+     * @throws UsernameNotFoundException
+     */
     @Test
     public void authenticateUserTest() throws UsernameNotFoundException {
 
@@ -39,6 +46,9 @@ class AppUserServiceTest {
         verify(loginRequest).getUsername();
     }
 
+    /**
+     * Testing registering reuest from the service
+     */
     @Test
     public void registerUserTest() {
         RegistrationRequest registrationRequest = mock(RegistrationRequest.class);

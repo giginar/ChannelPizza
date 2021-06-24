@@ -30,6 +30,9 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Service Layer test
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class PizzaServiceTest {
@@ -40,6 +43,9 @@ class PizzaServiceTest {
     @MockBean
     private PizzaRepository pizzaRepository;
 
+    /**
+     * Testing getting multiple pizza objects from the repository
+     */
     @Test
     void getAllPizzasTest() {
         List<String> mockIng1 = new ArrayList<>(Arrays.asList("Mozzarella", "Salami", "Mushrooms"));
@@ -55,6 +61,9 @@ class PizzaServiceTest {
         assertEquals(2, pizzaService.getAllPizzas().size());
     }
 
+    /**
+     * Testing of getting an object with the given string
+     */
     @Test
     public void getPizzaByIngredientTest() {
         List<String> mockIng1 = new ArrayList<>(Arrays.asList("Mozzarella", "Salami", "Mushrooms"));
@@ -70,6 +79,10 @@ class PizzaServiceTest {
         assertEquals(1, this.pizzaService.getAllPizzas().size());
     }
 
+    /**
+     * Testing of getting an object with the given string
+     * is the case the objects repository is empty
+     */
     @Test
     public void getPizzaByIngredientWhenEmptyTest() {
         when(this.pizzaRepository.findAll()).thenReturn(new ArrayList<Pizza>());
@@ -78,6 +91,9 @@ class PizzaServiceTest {
         assertTrue(this.pizzaService.getAllPizzas().isEmpty());
     }
 
+    /**
+     * Testing save method
+     */
     @Test
     void insertPizzaTest() {
         List<String> mockIng1 = new ArrayList<>(Arrays.asList("Mozzarella", "Salami", "Mushrooms"));
@@ -90,6 +106,9 @@ class PizzaServiceTest {
         assertTrue(this.pizzaService.getAllPizzas().isEmpty());
     }
 
+    /**
+     * Testing save method with multiple objects
+     */
     @Test
     public void insertAllPizzasTest() {
         List<String> mockIng1 = new ArrayList<>(Arrays.asList("Mozzarella", "Salami", "Mushrooms"));
@@ -110,12 +129,19 @@ class PizzaServiceTest {
         assertEquals(2, pizzaService.getAllPizzas().size());
     }
 
+    /**
+     * Testing save method with multiple objects
+     * in this case the object list is empty
+     */
     @Test
     public void insertAllPizzasWhenEmptyTest() {
         this.pizzaService.insertAllPizzas(new ArrayList<Pizza>());
         assertTrue(this.pizzaService.getAllPizzas().isEmpty());
     }
 
+    /**
+     * Testing of updating object
+     */
     @Test
     public void updatePizzaTest() {
         List<String> mockIng1 = new ArrayList<>(Arrays.asList("Mozzarella", "Salami", "Mushrooms"));
@@ -128,6 +154,9 @@ class PizzaServiceTest {
         assertEquals(1, pizzaService.getAllPizzas().size());
     }
 
+    /**
+     * Testing of deleting object
+     */
     @Test
     void deletePizzaTest() {
         doNothing().when(this.pizzaRepository).deleteById(anyString());

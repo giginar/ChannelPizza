@@ -35,7 +35,6 @@ public class AuthenticationController {
 	 */
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-		System.out.println("------********-------Login denemesi-------****-------");
 		return appUserService.authenticateUser(loginRequest);
 		
 	}
